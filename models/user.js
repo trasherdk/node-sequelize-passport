@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt-nodejs')
 
 
 module.exports = function(sequelize, DataTypes) {
-  var userSchema = sequelize.define('User', {
+  var userSchema = sequelize.define('user', {
     username: {
       type: DataTypes.STRING,
       unique: true,
@@ -45,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
   // This hook is called when an entry is being added to the back end.
   // This method is used to hash the password before storing it
   // in our database.
-  userSchema.hook('beforeCreate', function(user, options, callback) {
+  userSchema.beforeCreate((user, options, callback) => {
     var SALT_WORK_FACTOR = 10;
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
       if(err) {

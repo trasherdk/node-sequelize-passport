@@ -8,9 +8,10 @@
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize('my_database', 'db_user', 'db_password', {
-  dialect: "postgres",
-  port:    5432,
+var sequelize = new Sequelize('nodejs', 'nodejs', '5l1nger', {
+  dialect: "mysql",
+  port:    3306,
+  define: { engine: 'MYISAM' }
 });
 
 // backend model reference object, used to expose everything in it
