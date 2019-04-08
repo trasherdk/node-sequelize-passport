@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  block head
+    
+  body(class="p-0",data-spy="scroll",data-target=".scrollspy")
+    include ../includes/navigation
+
+    .container-fluid
+      <!-- .page-header -->
+      block page-header
+      .messages
+        include ../includes/messages
+      .content
+        if(request.path)
+          h4= request.path
+        block content
+
+    include ../includes/footer
+    include ../includes/foot
