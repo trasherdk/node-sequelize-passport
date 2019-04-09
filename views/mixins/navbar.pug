@@ -25,12 +25,12 @@ mixin nav_section_right
     block
 
 mixin nav_item_glyph(href, glyph, prompt, active)
-  li(class=active)
+  li(class= request.path == href ? 'active' : '')
     a( href=href ): +icon(glyph, prompt)
     
 		
 mixin nav_item(href, active)
-  li(class=active): a( href=href )
+  li(class= request.path == href ? 'active' : ''): a( href=href )
     block
 
 mixin nav_item_dropdown(href, active)

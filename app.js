@@ -25,17 +25,16 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-//NOTE: don't move this more down than here.. will cause blank database requests
-// by passport middleware sitting below
-app.use(express.static(path.join(__dirname, 'public')));
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//NOTE: don't move this more down than here.. will cause blank database requests
+// by passport middleware sitting below
+app.use(express.static(path.join(__dirname, 'public')));
 
 // setup the flash message middleware
 app.use(flash());
@@ -50,14 +49,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // specify controllers to handle various routes
-app.use('/account', account_routes);
 app.use('/', index_routes);
+app.use('/account', account_routes);
 app.use('/login', login_routes);
 app.use('/logout', logout_routes);
 app.use('/register', register_routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -67,21 +66,39 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') !== 'development'){
+if (app.get('env') === 'production'){
 // production error handler
 // no stacktraces leaked to user
+	console.log("production mode.");
+	
 	app.use(function(err, req, res, next) {
 	    res.status(err.status || 500);
 	    res.render('error', {
+		    request: {
+		      path: (typeof req.route.path == 'undefined') ? "/" : req.route.path
+		    },
+            User: req.user,
 	        message: err.message,
 	        error: {}
 	    });
 	});
+	
 } else {
+	console.log("development mode.");
+	
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
+        if (typeof req.route === 'undefined') {
+        	console.log("Setting req.route");
+        	req.route = { path: '/'};
+        }
+        
+        console.log("app.js error req:", req.route);
         res.render('error', {
-            user: req.user,
+		    request: {
+		      path: req.route.path
+		    },
+            User: req.user,
             message: err.message,
             errors: err
         });

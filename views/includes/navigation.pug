@@ -1,21 +1,22 @@
 include ../mixins/navbar
+
 +nav("Project name", "dropdown_menu", "inverse")
   +nav_section_left
     +nav_item( "/", "active" ) Home
     +nav_item( "/about" ) About
-    +nav_item( "#contact" ) Contact
+    +nav_item( "/contact" ) Contact
     +nav_item_dropdown( "#" )( label="Products")
-      +nav_item( "#product/1" ) Product 01
-      +nav_item( "#" ) Product 02
-      +nav_item( "#" ) Product 03
+      +nav_item( "#products/1" ) Product 01
+      +nav_item( "#products/2" ) Product 02
+      +nav_item( "#products/3" ) Product 03
       +nav_divider
       +nav_header Promotions
         +nav_item( "#" ) Promotion 01
         +nav_item( "#" ) Promotion 02
   +nav_section_right
-    -User.validated = 1
-    if (! User.validated)
-      +nav_item_glyph("#register", "user", " Sign Up")
-      +nav_item_glyph("#login", "log-in", " Log in")
+    -let validated = (typeof User === 'undefined') ? 0 : User.validated
+    if (! validated)
+      +nav_item_glyph("/register", "user", " Sign Up")
+      +nav_item_glyph("/login", "log-in", " Log in")
     else
-      +nav_item_glyph("#profile", "user", User.name)
+      +nav_item_glyph("/profile", "user", User.name)
