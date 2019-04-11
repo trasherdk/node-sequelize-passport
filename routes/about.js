@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', (req, res, next) => {
-	console.log("router.index:", req.route);
-	res.render('home', {
+	console.log("router.about:", req.route);
+	res.render('about', {
 		request: {
 			path: req.route.path
 		},

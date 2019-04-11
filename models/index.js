@@ -8,8 +8,9 @@
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize('nodejs', 'nodejs', '5l1nger', {
+var sequelize = new Sequelize('codesandbox', 'codesandbox', 'codesandbox20190402', {
   dialect: "mysql",
+  host: 'ghost-dev-1.fumlersoft.dk',
   port:    3306,
   define: { engine: 'MYISAM' }
 });

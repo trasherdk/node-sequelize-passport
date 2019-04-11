@@ -1,11 +1,12 @@
-#!/usr/bin/env node
+/* eslint-disable no-console */
+//#!/usr/bin/env node
 
 /**
 * Module dependencies.
 */
 
 var app = require('../app');
-var debug = require('debug')('passport1:server');
+var debug = require('debug')('node-sequelize-passport:server');
 var http = require('http');
 
 /**
