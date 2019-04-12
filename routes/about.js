@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
 	console.log("router.about:", req.route);
 	res.render('about', {
 		request: {
@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
 		User: req.user,
 		message: null
 	});
-	return next();
 });
 
 module.exports = router;
