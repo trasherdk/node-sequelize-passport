@@ -68,8 +68,6 @@ app.use((req, res, next) => {
 
 // error handlers
 
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'production') {
   // production error handler
   // no stacktraces leaked to user
@@ -88,6 +86,8 @@ if (app.get('env') === 'production') {
   });
 
 } else {
+// development error handler
+// will print stacktrace
   console.log("development mode.");
 
   app.use((err, req, res, next) => {
