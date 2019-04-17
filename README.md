@@ -16,3 +16,11 @@ Usually all Node.js projects are associated with MongoDB for the model, I wanted
 ### Start building cool apps on top of this boilerplate
 
 * Copy env-sample to .env and edit to match your database setup.
+```
+NODE_ENV=development
+
+DBSERVER=localhost
+DBUSER=dbusername
+DBPASS=dbuserpassword
+DB=databasename
+```
