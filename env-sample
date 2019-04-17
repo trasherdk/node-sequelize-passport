@@ -1,0 +1,6 @@
+NODE_ENV=development
+
+DBSERVER=localhost
+DBUSER=dbusername
+DBPASS=dbuserpassword
+DB=databasename
