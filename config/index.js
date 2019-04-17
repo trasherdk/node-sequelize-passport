@@ -9,10 +9,10 @@ const dbconfig = {
     db: process.env.DB
   };
 
+
 const defaults = {
-    root: path.normalize(__dirname + '/..')
+    root: path.normalize(__dirname + '/..'),
+    port: 3000
   };
 
-  module.exports = {
-    config: Object.assign({}, dbconfig, defaults)
-  };
+module.exports = Object.assign({}, dbconfig, defaults);

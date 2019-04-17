@@ -11,14 +11,13 @@ const passport = require('passport');
 const session = require('express-session');
 
 const config = require('./config');
-console.log(config);
+console.log('Config:',config);
 
 // Bootstrap models
 const models = join(__dirname, 'models');
 
-fs
-  .readdirSync(models)
+fs.readdirSync(models)
   .filter(file => ~file.indexOf('.js'))
   .forEach(file => require(join(models, file)));
 
-console.log(models);
+console.log('Models:', models);
