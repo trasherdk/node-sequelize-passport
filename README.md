@@ -1,4 +1,4 @@
-# Node.js, Express.js, Sequelize.js and Passport.js Boilerplate
+# Node.js, Express.js, PUG, Sequelize.js and Passport.js Boilerplate
 
 Boilerplate to get started with Node.js, Express, Sequelize and Passport.js.
 
@@ -14,3 +14,5 @@ Usually all Node.js projects are associated with MongoDB for the model, I wanted
 * Also understand how `connect-flash` works [here](https://gist.github.com/tpblanke/11061808)
 
 ### Start building cool apps on top of this boilerplate
+
+* Copy env-sample to .env and edit to match your database setup.
