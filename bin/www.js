@@ -4,10 +4,13 @@
 /**
 * Module dependencies.
 */
+require('dotenv').config();
 
 var app = require('../app');
 var debug = require('debug')('node-sequelize-passport:server');
 var http = require('http');
+
+const config = require('../config');
 
 /**
 * Get port from environment and store in Express.
@@ -27,7 +30,7 @@ var models = require('../models');
 models
   .sequelize
   //.sync({ force: true }) // !!!CAUTION: wipe out the entire database
-  .sync() // use this instead, just sync model and the database
+  .sync({ force: config.dbforce }) // use this instead, just sync model and the database
   .then(function() {
     console.log("Sequelize: Sync succeeded");
     console.log("Server: Start listening on "+ port);
