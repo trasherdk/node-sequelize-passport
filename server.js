@@ -20,6 +20,7 @@ const models = join(__dirname, 'models');
 
 fs.readdirSync(models)
   .filter(file => ~file.indexOf('.js'))
+  .filter(file => file.indexOf('index.js'))
   .forEach(file => {
     require(join(models, file));
     console.log(models, file);

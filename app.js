@@ -14,7 +14,7 @@ const flash = require('connect-flash');
 // Initialize passport variables
 const passportConfig = require('./config/passport');
 
-const index_routes = require('./routes/index');
+const index_routes = require('./routes/home');
 const about_routes = require('./routes/about');
 
 const account_routes = require('./routes/account');

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../models');
+var models = require('../models/user');
 
 router.post('/', function(req, res) {
   // first fill the database with this new user's information
