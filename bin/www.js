@@ -11,7 +11,7 @@ var debug = require('debug')('node-sequelize-passport:server');
 var http = require('http');
 
 const config = require('../config');
-
+console.log('config:',config);
 /**
 * Get port from environment and store in Express.
 */
@@ -30,7 +30,7 @@ var models = require('../models');
 models
   .sequelize
   //.sync({ force: true }) // !!!CAUTION: wipe out the entire database
-  .sync({ force: config.dbforce }) // use this instead, just sync model and the database
+  .sync({ force: false }) // use this instead, just sync model and the database
   .then(function() {
     console.log("Sequelize: Sync succeeded");
     console.log("Server: Start listening on "+ port);
